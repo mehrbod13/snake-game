@@ -1,0 +1,71 @@
+@import url('https://fonts.googleapis.com/css2?family=Pangolin&display=swap');
+
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
+    font-family: 'Pangolin', cursive, sans-serif;
+}
+
+:root {
+    --light-green: rgb(56, 218, 56);
+    --light-red: rgb(245, 62, 62);
+}
+
+#screen-wrapper {
+    width: 100%;
+    min-height: 100vh;
+    position: relative;
+}
+
+#screen-wrapper::before {
+    content: '';
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, .2);
+}
+
+#start-menu, #end-menu {
+    z-index: 50;
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+#end-menu {
+    gap: 1rem;
+}
+
+#start-menu button, #end-menu button {
+    font-size: 24px;
+    padding: 1rem 3rem;
+    border-radius: .5rem;
+    cursor: pointer;
+    color: white;
+    font-weight: bold;
+}
+
+#start-menu button {
+    background-color: var(--light-green);
+    border: 3px solid var(--light-green);
+}
+
+#end-menu button {
+    background-color: var(--light-red);
+    border: 3px solid var(--light-red);
+}
+
+#start-menu button:hover, #end-menu button:hover {
+    background-color: transparent;
+    border-style: dashed;
+    color: black;
+}
