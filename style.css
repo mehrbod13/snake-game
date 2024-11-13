@@ -73,3 +73,14 @@ body {
     border-style: dashed;
     color: black;
 }
+
+#pause_menu {
+    display: none;
+    padding-left: 90px;
+    padding-top: 20px;
+}
+
+#pause_menu img {
+    width: 30px;
+    height: 30px;
+}
