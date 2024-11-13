@@ -50,6 +50,7 @@ var food = null;
 var GameStatus = GAME_STATES.START;
 var Score = 0;
 var HighestScore = localStorage.getItem("high-score") || 0;
+var touchStart;
 /***************************************************/
 
 /******************* FUNCTIONS *********************/
@@ -297,6 +298,32 @@ function UpdateScoreHud() {
 }
 
 /***************************************************/
+
+/***************** TOUCH LISTENER ******************/
+
+document.addEventListener("touchstart", (e) => {
+  const touches = e?.changedTouches;
+  if (touches.length !== 0) {
+    const touch = touches[0];
+    touchStart = touch;
+  }
+});
+document.addEventListener("touchend", (e) => {
+  const touches = e?.changedTouches;
+  if (touches.length !== 0 && touchStart) {
+    const touch = touches[0];
+    const xChange = touchStart.pageX - touch.pageX;
+    const yChange = touchStart.pageY - touch.pageY;
+    if (Math.abs(xChange) > Math.abs(yChange)) {
+      SnakeDirection = xChange < 0 ? DIRECTIONS.RIGHT : DIRECTIONS.LEFT;
+    } else {
+      SnakeDirection = yChange < 0 ? DIRECTIONS.DOWN : DIRECTIONS.UP;
+    }
+  }
+});
+
+/***************************************************/
+
 
 /******************* GAME LOGIC ********************/
 
