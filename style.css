@@ -15,6 +15,7 @@
 
 body {               
     overscroll-behavior: contain;
+    overflow: hidden;
 }
 
 #screen-wrapper {

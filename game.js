@@ -18,6 +18,10 @@ const KEYS = {
   DOWN: "ArrowDown",
   LEFT: "ArrowLeft",
   RIGHT: "ArrowRight",
+  W: "w",
+  A: "a",
+  S: "s",
+  D: "d",
 };
 const SNAKE_STATES = {
   STATIC: "static",
@@ -88,7 +92,6 @@ function move() {
   setTimeout(() => move(), MOVE_PERIOD);
 
   if (isMobile()) {
-    console.log("ok");
     updatePauseMenu();
   }
 
@@ -157,15 +160,19 @@ function HandleKey(e) {
   const key = e.key;
   switch (key) {
     case KEYS.UP:
+    case KEYS.W:
       SnakeDirection = DIRECTIONS.UP;
       break;
-    case KEYS.DOWN:
+    case KEYS.DOWN: 
+    case KEYS.S:
       SnakeDirection = DIRECTIONS.DOWN;
       break;
-    case KEYS.LEFT:
+    case KEYS.LEFT: 
+    case KEYS.A:
       SnakeDirection = DIRECTIONS.LEFT;
       break;
     case KEYS.RIGHT:
+    case KEYS.D:
       SnakeDirection = DIRECTIONS.RIGHT;
       break;
   }
@@ -214,8 +221,8 @@ function ReGenerateFood() {
 }
 
 function IsCollidedWithBorders() {
-  let xCheck = headX <= 0 || headX >= BOARD_WIDTH - PIXEL;
-  let yCheck = headY <= 0 || headY >= BOARD_HEIGHT - PIXEL;
+  let xCheck = headX < 0 || headX > BOARD_WIDTH - PIXEL;
+  let yCheck = headY < 0 || headY > BOARD_HEIGHT;
   return xCheck || yCheck;
 }
 
